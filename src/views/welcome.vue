@@ -5,8 +5,8 @@
     </transition>
     <div class="swiper-container welcome-container" v-if="firstEnter==='1'||!firstEnter">
       <div class="swiper-wrapper">
-        <div class="swiper-slide " v-for="(item,index) in imgList">
-          <img :src="item" @click="goToRegister(index)">
+        <div class="swiper-slide" :key="index" v-for="(item,index) in imgList">
+          <img :src="item" @click="goToRegister(index)" >
         </div>
       </div>
     </div>

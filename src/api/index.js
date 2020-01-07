@@ -11,14 +11,14 @@ axios.defaults.withCredentials = true;//允许携带cookies
 * @param {param} 对象数据
 * @return 序列化后数据
 */
-const changeParam = (param) => {
-  if (param) {
-    return JSON.stringify(param).replace(/:/g, '=').replace(/,/g, '&').replace(/{/g, '?').replace(/}/g, '').replace(/"/g, '');
-  }
-  else {
-    return '';
-  }
-};
+// const changeParam = (param) => {
+//   if (param) {
+//     return JSON.stringify(param).replace(/:/g, '=').replace(/,/g, '&').replace(/{/g, '?').replace(/}/g, '').replace(/"/g, '');
+//   }
+//   else {
+//     return '';
+//   }
+// };
 
 export default {
   /* get异步封装
@@ -28,10 +28,15 @@ export default {
   * @param {data} 对象化数据，如http://www.baidu.com?data=abc，可直接传{data:'abc'}
   * @return 无返回值
   */
-  get: function (url, res, data = '') {
-    axios.get(`${url}${changeParam(data)}`).then(res).catch(error => {
-      console.log(error);
+  get: function (url, data={}) {
+    return axios.get(url,{
+      params:{
+        ...data
+      }
     })
+      .then(res=>{
+        return res.data;
+      });
   },
   /* post异步封装
   *
@@ -40,9 +45,10 @@ export default {
   * @param {res} 执行成功回调函数
   * @return 无返回值
   */
-  post: function (url, data, res) {
-    axios.post(url, data).then(res).catch(error => {
-      console.log(error)
-    });
+  post: function (url, data) {
+    return axios.post(url, data)
+      .then(res=>{
+        return res.data;
+      });
   }
 }

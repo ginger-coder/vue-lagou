@@ -1,10 +1,7 @@
 import http from './index'
 //新闻类api
 export default {
-  getNews: (res) => {
-    http.get('/api/news/list', res);
-  },
-  getSingleNews: (res, nid) => {
-    http.get('/api/news/single', res, {nid: nid});
-  },
+  getNews: (params) => { return http.get('/api/cms/cmsinfo/querytop', { ...params }) },
+  advList: (params) => { return http.get('/api/advert/advertinfo/querytop', { ...params }) },
+  getBanner: (params) => { return http.get('/api/cms/cmsinfo/querytop', { ...params }) }
 }
