@@ -16,7 +16,7 @@
     "jspdf": "^1.5.3",
     "mint-ui": "^2.2.13",
     "mockjs": "^1.1.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "sass-loader": "^8.0.0",
     "swiper": "^5.2.1",
     "vue": "^2.6.10",
